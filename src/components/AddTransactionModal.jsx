@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Tag, Calendar, DollarSign, Check, Trash2 } from 'lucide-react';
 
-const categories = [
+const expenseCategories = [
     { id: 'food', name: 'Food & Drink', icon: '🍔' },
     { id: 'transportation', name: 'Transportation', icon: '🚗' },
     { id: 'shopping', name: 'Shopping', icon: '🛍️' },
@@ -13,9 +13,21 @@ const categories = [
     { id: 'other', name: 'Other', icon: '📦' },
 ];
 
+const incomeCategories = [
+    { id: 'salary', name: 'Salary', icon: '💼' },
+    { id: 'freelance', name: 'Freelance', icon: '💻' },
+    { id: 'bonus', name: 'Bonus', icon: '🎁' },
+    { id: 'gift', name: 'Gift', icon: '🎀' },
+    { id: 'allowance', name: 'Allowance', icon: '👨‍👩‍👧' },
+    { id: 'investment', name: 'Investment', icon: '📈' },
+    { id: 'parttime', name: 'Part-time', icon: '🏪' },
+    { id: 'other_income', name: 'Other', icon: '📦' },
+];
+
 const AddTransactionModal = ({ isOpen, onClose, type = 'expense', onSave }) => {
+    const categories = type === 'income' ? incomeCategories : expenseCategories;
     const [amount, setAmount] = useState('');
-    const [category, setCategory] = useState('food');
+    const [category, setCategory] = useState(categories[0].id);
     const [note, setNote] = useState('');
     const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
 

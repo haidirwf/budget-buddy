@@ -12,6 +12,14 @@ const categoryColors = {
     health: '#ef4444',
     bills: '#6366f1',
     other: '#6b7280',
+    salary: '#059669',
+    freelance: '#7c3aed',
+    bonus: '#db2777',
+    gift: '#f97316',
+    allowance: '#0891b2',
+    investment: '#16a34a',
+    parttime: '#ea580c',
+    other_income: '#6b7280',
 };
 
 const Statistics = ({ data }) => {

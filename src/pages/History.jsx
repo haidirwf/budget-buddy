@@ -12,6 +12,14 @@ const categoryIcons = {
     health: '💊',
     bills: '💡',
     income: '💰',
+    salary: '💼',
+    freelance: '💻',
+    bonus: '🎁',
+    gift: '🎀',
+    allowance: '👨‍👩‍👧',
+    investment: '📈',
+    parttime: '🏪',
+    other_income: '📦',
     other: '📦',
 };
 

@@ -1,5 +1,6 @@
 export const generateSampleData = () => {
-    const categories = ['food', 'transportation', 'shopping', 'entertainment', 'education', 'health', 'bills', 'other'];
+    const expenseCategories = ['food', 'transportation', 'shopping', 'entertainment', 'education', 'health', 'bills', 'other'];
+    const incomeCategories = ['salary', 'freelance', 'bonus', 'gift', 'allowance', 'investment', 'parttime', 'other_income'];
     const transactions = [];
 
     const today = new Date();
@@ -20,12 +21,21 @@ export const generateSampleData = () => {
 
             if (isIncome) {
                 amount = [500000, 1500000, 2000000, 750000][Math.floor(Math.random() * 4)];
-                category = 'income';
-                const incomeNotes = ['Monthly Allowance', 'Part-time Job', 'Gift Money', 'Freelance Work', 'Bonus', 'Salary', 'Internship'];
-                note = incomeNotes[Math.floor(Math.random() * incomeNotes.length)];
+                category = incomeCategories[Math.floor(Math.random() * incomeCategories.length)];
+                const incomeNotes = {
+                    salary: ['Monthly Salary', 'Salary Payment'],
+                    freelance: ['Freelance Project', 'Freelance Work'],
+                    bonus: ['Monthly Bonus', 'Performance Bonus'],
+                    gift: ['Gift Money', 'Money Gift'],
+                    allowance: ['Allowance', 'Weekly Allowance'],
+                    investment: ['Investment Return', 'Dividend'],
+                    parttime: ['Part-time Work', 'Part-time Job'],
+                    other_income: ['Income', 'Other Income']
+                };
+                note = incomeNotes[category][Math.floor(Math.random() * incomeNotes[category].length)];
             } else {
                 amount = Math.floor(Math.random() * 150000) + 15000;
-                category = categories[Math.floor(Math.random() * categories.length)];
+                category = expenseCategories[Math.floor(Math.random() * expenseCategories.length)];
 
                 const notes = {
                     food: ['Lunch', 'Dinner with friends', 'Coffee', 'Breakfast', 'Snacks'],
