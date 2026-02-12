@@ -29,7 +29,7 @@ const Settings = ({ data, onUpdateProfile, onClearData, darkMode, onToggleDarkMo
     };
 
     return (
-        <div className="min-h-screen pb-24 px-4 pt-6">
+        <div className="min-h-screen pb-24 px-4 pt-6 max-w-4xl mx-auto">
             <h1 className="text-2xl font-bold mb-6">Settings</h1>
 
             {/* Profile Settings */}

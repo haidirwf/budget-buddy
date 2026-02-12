@@ -98,7 +98,7 @@ const Statistics = ({ data }) => {
     const savingRate = totalIncome > 0 ? ((totalIncome - totalExpense) / totalIncome) * 100 : 0;
 
     return (
-        <div className="min-h-screen pb-24 px-4 pt-6">
+        <div className="min-h-screen pb-24 px-4 pt-6 max-w-4xl mx-auto">
             <h1 className="text-2xl font-bold mb-6">Statistics</h1>
 
             {/* Quick Stats Cards */}

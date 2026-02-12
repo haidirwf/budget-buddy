@@ -20,8 +20,9 @@ export const generateSampleData = () => {
 
             if (isIncome) {
                 amount = [500000, 1500000, 2000000, 750000][Math.floor(Math.random() * 4)];
-                category = 'other';
-                note = ['Monthly Allowance', 'Part-time Job', 'Gift Money', 'Freelance Work'][Math.floor(Math.random() * 4)];
+                category = 'income';
+                const incomeNotes = ['Monthly Allowance', 'Part-time Job', 'Gift Money', 'Freelance Work', 'Bonus', 'Salary', 'Internship'];
+                note = incomeNotes[Math.floor(Math.random() * incomeNotes.length)];
             } else {
                 amount = Math.floor(Math.random() * 150000) + 15000;
                 category = categories[Math.floor(Math.random() * categories.length)];

@@ -63,8 +63,7 @@ const AddTransactionModal = ({ isOpen, onClose, type = 'expense', onSave }) => {
                         initial={{ opacity: 0, y: 100, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 100, scale: 0.95 }}
-                        // Kode baru (Center Align Desktop)
-                        className="fixed inset-0 m-auto h-fit w-[calc(100%-2rem)] md:w-full md:max-w-md bg-white dark:bg-[#1a1a1a] rounded-3xl shadow-2xl z-50 overflow-hidden flex flex-col"
+                        className="fixed inset-0 m-auto h-fit w-[calc(100%-2rem)] md:w-full md:max-w-md bg-white dark:bg-[#1a1a1a] rounded-3xl z-50 overflow-hidden flex flex-col border-2 border-gray-200 dark:border-gray-800"
                     >
                         {/* Header */}
                         <div className="p-6 pb-0 flex items-center justify-between">
@@ -150,11 +149,11 @@ const AddTransactionModal = ({ isOpen, onClose, type = 'expense', onSave }) => {
                         </form>
 
                         {/* Footer Action Buttons */}
-                        <div className="p-6 bg-gray-50 dark:bg-gray-800/30 flex gap-3">
+                        <div className="p-6 bg-gray-50 dark:bg-gray-800/30 flex gap-3 border-t border-gray-200 dark:border-gray-800">
                             <button
                                 type="button"
                                 onClick={handleClose}
-                                className="flex-1 flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-800 transition-all active:scale-95"
+                                className="flex-1 flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-800 transition-all active:scale-95 border border-gray-300 dark:border-gray-700"
                             >
                                 <X size={18} />
                                 Batal
@@ -162,7 +161,7 @@ const AddTransactionModal = ({ isOpen, onClose, type = 'expense', onSave }) => {
                             <button
                                 type="submit"
                                 form="transaction-form"
-                                className={`flex-[2] flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-white shadow-lg shadow-blue-500/30 transition-all active:scale-95 ${type === 'income' ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'
+                                className={`flex-[2] flex items-center justify-center gap-2 py-4 px-6 rounded-2xl font-bold text-white transition-all active:scale-95 border border-transparent hover:opacity-90 ${type === 'income' ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'
                                     }`}
                             >
                                 <Check size={18} />

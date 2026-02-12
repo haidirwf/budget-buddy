@@ -11,6 +11,7 @@ const categoryIcons = {
     education: '📚',
     health: '💊',
     bills: '💡',
+    income: '💰',
     other: '📦',
 };
 
@@ -67,7 +68,7 @@ const History = ({ data, onDeleteTransaction }) => {
     };
 
     return (
-        <div className="min-h-screen pb-24 px-4 pt-6">
+        <div className="min-h-screen pb-24 px-4 pt-6 max-w-4xl mx-auto">
             {/* Summary Cards */}
             <div className="grid grid-cols-3 gap-3 mb-6">
                 <motion.div

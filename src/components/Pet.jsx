@@ -29,7 +29,7 @@ const Pet = ({ stage = 'egg', mood = 'neutral', animate = 'idle', onClick }) => 
             } : {}}
             transition={{ duration: 0.6 }}
         >
-            <svg width="200" height="240" viewBox="0 0 200 240" className="drop-shadow-2xl">
+            <svg width="200" height="240" viewBox="0 0 200 240" className="">
                 {/* Egg body */}
                 <ellipse cx="100" cy="140" rx="70" ry="90" fill={getPetColor()} opacity="0.9" />
                 <ellipse cx="100" cy="140" rx="60" ry="80" fill={getPetColor()} />

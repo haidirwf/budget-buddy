@@ -1,9 +1,31 @@
 import { motion } from 'framer-motion';
-import { Lock, Check } from 'lucide-react';
+import { Lock, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
 import Pet from '../components/Pet';
 import { achievementDefinitions, calculateProgress } from '../utils/achievements';
 
 const PetInfo = ({ data, onUpdatePetName }) => {
+    const [carouselIndex, setCarouselIndex] = useState(data.petProgress.level - 1);
+    
+    const petStages = [
+        { stage: 'egg', level: 1, unlocked: true, requirement: 0 },
+        { stage: 'baby', level: 2, unlocked: data.petProgress.totalSavings >= 500000, requirement: 500000 },
+        { stage: 'adult', level: 3, unlocked: data.petProgress.totalSavings >= 2000000, requirement: 2000000 },
+    ];
+
+    const nextCarousel = () => {
+        setCarouselIndex((prev) => (prev + 1) % petStages.length);
+    };
+
+    const prevCarousel = () => {
+        setCarouselIndex((prev) => (prev - 1 + petStages.length) % petStages.length);
+    };
+
+    const getLeftToUnlock = (requirement) => {
+        const left = requirement - data.petProgress.totalSavings;
+        return Math.max(0, left);
+    };
+
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('id-ID', {
             style: 'currency',
@@ -25,7 +47,7 @@ const PetInfo = ({ data, onUpdatePetName }) => {
     const nextStage = getNextStageInfo();
 
     return (
-        <div className="min-h-screen pb-24 px-4 pt-6">
+        <div className="min-h-screen pb-24 px-4 pt-6 max-w-4xl mx-auto">
             <h1 className="text-2xl font-bold mb-6">Pet Info & Achievements</h1>
 
             {/* Pet Display */}
@@ -76,7 +98,7 @@ const PetInfo = ({ data, onUpdatePetName }) => {
                                         (data.petProgress.totalSavings / (data.petProgress.stage === 'egg' ? 500000 : 2000000)) * 100
                                     )}%`,
                                 }}
-                                className="h-full bg-gradient-to-r from-light-primary to-light-success dark:from-dark-primary dark:to-dark-success rounded-full"
+                                className="h-full bg-light-primary dark:bg-dark-primary rounded-full"
                             />
                         </div>
                     </div>

@@ -41,8 +41,17 @@ const Dashboard = ({ data, onAddTransaction, onPetClick }) => {
         }).format(amount);
     };
 
+    const getLeftToNextLevel = () => {
+        if (data.petProgress.stage === 'egg') {
+            return Math.max(0, 500000 - data.petProgress.totalSavings);
+        } else if (data.petProgress.stage === 'baby') {
+            return Math.max(0, 2000000 - data.petProgress.totalSavings);
+        }
+        return 0;
+    };
+
     return (
-        <div className="min-h-screen pb-24 px-4 pt-6">
+        <div className="min-h-screen pb-24 px-4 pt-6 max-w-4xl mx-auto">
             {/* Pet Display */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
@@ -67,12 +76,13 @@ const Dashboard = ({ data, onAddTransaction, onPetClick }) => {
                             initial={{ width: 0 }}
                             animate={{ width: `${data.petProgress.health}%` }}
                             transition={{ duration: 0.5 }}
-                            className={`h-full rounded-full ${data.petProgress.health > 70
-                                ? 'bg-gradient-to-r from-green-400 to-green-500'
-                                : data.petProgress.health > 40
-                                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-500'
-                                    : 'bg-gradient-to-r from-red-400 to-red-500'
-                                }`}
+                            className={`h-full rounded-full ${
+                                data.petProgress.health > 70
+                                    ? 'bg-green-500'
+                                    : data.petProgress.health > 40
+                                        ? 'bg-yellow-500'
+                                        : 'bg-red-500'
+                            }`}
                         />
                     </div>
                 </div>
@@ -99,8 +109,8 @@ const Dashboard = ({ data, onAddTransaction, onPetClick }) => {
                     </motion.h2>
 
                     {/* Pet Stage Info */}
-                    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                        <div className="flex justify-around text-sm">
+                    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+                        <div className="flex justify-around text-sm mb-4">
                             <div>
                                 <p className="text-gray-500 dark:text-gray-400">Stage</p>
                                 <p className="font-semibold capitalize">{data.petProgress.stage}</p>
@@ -114,6 +124,32 @@ const Dashboard = ({ data, onAddTransaction, onPetClick }) => {
                                 <p className="font-semibold">{data.petProgress.daysStreak} days</p>
                             </div>
                         </div>
+
+                        {/* Next Level Progress */}
+                        {data.petProgress.level < 3 && (
+                            <div className="bg-light-primary/10 dark:bg-dark-primary/10 rounded-lg p-3">
+                                <div className="flex justify-between items-center mb-2">
+                                    <p className="text-xs font-semibold text-light-primary dark:text-dark-primary">
+                                        Left till next level:
+                                    </p>
+                                    <p className="text-sm font-bold text-light-primary dark:text-dark-primary">
+                                        {formatCurrency(getLeftToNextLevel())}
+                                    </p>
+                                </div>
+                                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{
+                                            width: `${Math.min(
+                                                100,
+                                                (data.petProgress.totalSavings / (data.petProgress.stage === 'egg' ? 500000 : 2000000)) * 100
+                                            )}%`,
+                                        }}
+                                        className="h-full bg-light-primary dark:bg-dark-primary rounded-full"
+                                    />
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </motion.div>
@@ -146,7 +182,7 @@ const Dashboard = ({ data, onAddTransaction, onPetClick }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="grid grid-cols-2 gap-4 mt-6"
+                className="grid grid-cols-2 md:grid-cols-2 gap-4 mt-6 md:max-w-sm md:mx-auto"
             >
                 <div className="card">
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Total Savings</p>
