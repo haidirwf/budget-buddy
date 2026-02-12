@@ -56,7 +56,7 @@ const Settings = ({ data, onUpdateProfile, onClearData, darkMode, onToggleDarkMo
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                        <label className="block text-sm font-medium mb-2 items-center gap-2">
                             <Heart size={16} />
                             Pet Name
                         </label>
@@ -70,7 +70,7 @@ const Settings = ({ data, onUpdateProfile, onClearData, darkMode, onToggleDarkMo
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                        <label className="text-sm font-medium mb-2 flex items-center gap-2">
                             <DollarSign size={16} />
                             Monthly Budget (IDR)
                         </label>

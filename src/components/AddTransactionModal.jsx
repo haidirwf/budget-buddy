@@ -146,7 +146,7 @@ const AddTransactionModal = ({ isOpen, onClose, type = 'expense', onSave }) => {
                                     />
                                 </div>
                                 <div>
-                                    <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 block flex items-center gap-2">
+                                    <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 flex items-center gap-2">
                                         <Calendar size={14} /> Tanggal
                                     </label>
                                     <input
@@ -177,7 +177,7 @@ const AddTransactionModal = ({ isOpen, onClose, type = 'expense', onSave }) => {
                                     }`}
                             >
                                 <Check size={18} />
-                                Simpan Oke
+                                Simpan
                             </button>
                         </div>
                     </motion.div>

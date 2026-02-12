@@ -271,7 +271,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="fixed top-10 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm bg-blue-600 text-white px-6 py-4 rounded-xl shadow-xl cursor-pointer"
+            className="fixed top-10 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm bg-blue-600 text-white px-6 py-4 rounded-xl cursor-pointer"
             onClick={() => setNewAchievements([])}
           >
             <div className="flex flex-col items-center text-center">
