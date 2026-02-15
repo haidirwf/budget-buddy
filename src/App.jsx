@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, List, BarChart3, Heart, Settings as SettingsIcon } from 'lucide-react';
 import { useLocalStorage, getInitialData } from './hooks/useLocalStorage';
@@ -32,6 +32,26 @@ function App() {
       });
     }
   }, []);
+
+  // Ensure balance is reset to 0 on each app open (clear transactions once per session)
+  const _resetOnceRef = useRef(false);
+  useEffect(() => {
+    if (data && !_resetOnceRef.current) {
+      const cleared = {
+        ...data,
+        transactions: [],
+        petProgress: {
+          ...data.petProgress,
+          totalSavings: 0,
+          health: 70,
+          stage: 'egg',
+          level: 1,
+        },
+      };
+      setData(cleared);
+      _resetOnceRef.current = true;
+    }
+  }, [data]);
 
   // Apply dark mode
   useEffect(() => {
